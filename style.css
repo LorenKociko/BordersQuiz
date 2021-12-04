@@ -1,0 +1,240 @@
+@font-face {
+    font-family: 'TwemojiMozilla';
+    src: url('TwemojiMozilla.ttf');
+}
+
+body {
+    margin: 4vh;
+    font-family: 'Open Sans', 'TwemojiMozilla';
+    background: #f1faee;
+    color: #444;
+}
+
+.game-panel {
+    display: grid;
+    min-height: 92vh;
+    grid-template-columns: minmax(200px, 15%) auto;
+    grid-template-rows: 200px 40px auto;
+    gap: 10px;
+}
+
+.game-panel * {
+    border-radius: 5px;
+}
+
+#sidebar {
+    grid-row: 1 / 4;
+    padding: 5px;
+    text-align: center;
+    background: #e63946;
+    color: #f1faee;
+    display: flex;
+    flex-direction: column;
+    min-height: 100hv;
+    position: relative;
+}
+
+#btn-div {
+    top: 75vh;
+    position: sticky;
+}
+
+#sidebar-sticky {
+    position: sticky;
+    top: 4vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.btn {
+    margin: 10px;
+    padding: 10%;
+    width: 80%;
+    border: none;
+}
+
+#my-country {
+    background: #457b9d;
+    display: flex;
+    font-size: 32px;
+    color: #f1faee;
+    align-items: center;
+}
+
+#my-country-flag {
+    font-size: 4.5em;
+    padding: 0 35px;
+}
+
+#my-country-name {
+    color: #f1faee;
+}
+
+#progress-div {
+    grid-row: 2;
+    position: sticky;
+    z-index: 10;
+    top: 0;
+    height: auto;
+}
+
+progress {
+    background: cornflowerblue;
+    border-radius: 5px;
+    height: 100%;
+    width: 100%;
+}
+
+#progress::-webkit-progress-bar {
+    background: rgb(185, 197, 250);
+    border-radius: 5px;
+}
+
+#progress::-webkit-progress-value {
+    background: rgb(88, 88, 240);
+    border-radius: 5px;
+}
+
+.neighbours-area {
+    margin: 0;
+    padding: 0;
+    grid-row: 3;
+    position: relative;
+}
+
+#neighbours-panel {
+    background: #f1faee;
+    display: flex;
+    flex-wrap: wrap;
+    justify-items: center;
+    justify-content: space-around;
+    gap: 20px;
+    padding: 20px;
+    /* height: calc(100% - 40px); */
+}
+
+#cover-neighbours-panel {
+    background-color: rgba(0, 18, 25, 0.9);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+#covermsg {
+    color: #e63946;
+    font-size: 3em;
+}
+
+.neighbour {
+    text-align: center;
+    width: 200px;
+    height: max-content;
+    align-content: center;
+    padding: 0.5em;
+}
+
+.neighbour:hover {
+    cursor: pointer;
+}
+
+.neighbour .neighbours-name {
+    font-size: 1.5em;
+}
+
+.neighbour .neighbours-flag {
+    font-size: 6em;
+}
+
+.was-clicked.neighbour-is-valid {
+    border: solid 3px #457b9d;
+}
+
+.was-clicked.neighbour-is-invalid {
+    border: solid 3px #e63946;
+}
+
+.neighbour:not(.was-clicked) {
+    border: solid 3px #f1faee;
+}
+
+@media (max-width: 800px) {
+    .game-panel * {
+        border-radius: 0px;
+    }
+    progress {
+        border-radius: 0px;
+    }
+    #progress::-webkit-progress-bar {
+        border-radius: 0px;
+    }
+    #progress::-webkit-progress-value {
+        border-radius: 0px;
+    }
+    body {
+        padding: 0;
+        margin: 0;
+    }
+    .game-panel {
+        grid-template-columns: auto;
+        grid-template-rows: auto;
+        gap: 0px;
+    }
+    #sidebar {
+        grid-row: 2;
+        justify-content: center;
+        margin-top: -50px;
+    }
+    #btn-div {
+        display: flex;
+        justify-content: space-around;
+        margin-top: -50px;
+        margin-bottom: 10px;
+    }
+    .btn {
+        padding: 20px;
+        border: none;
+        border-radius: 5px;
+    }
+    #sidebar h1 {
+        padding-top: 20px;
+        font-size: 2.5em;
+    }
+    #sidebar-sticky {
+        position: relative;
+        top: -40px;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+    #my-country {
+        grid-row: 3;
+    }
+    #my-country-flag {
+        font-size: 3em
+    }
+    #my-country-name {
+        font-size: 0.69em
+    }
+    #progress-div {
+        grid-row: 1;
+        top: 0;
+        height: 30px;
+    }
+    .neighbours-area {
+        grid-row: 4;
+    }
+    .neighbour .neighbours-name {
+        font-size: 1.1em;
+    }
+    .neighbour {
+        width: 100px;
+    }
+    .neighbour .neighbours-flag {
+        font-size: 3.5em;
+    }
+}

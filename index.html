@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borders Quiz</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <script src="countries.js"></script>
+    <script>
+        // const allCountries = new Array();
+        // for (let i = 0; i < countryObjects.length; i++) {
+        //     allCountries[countryObjects[i]['code3']] = {
+        //         'code2': countryObjects[i]['code'],
+        //         'name': countryObjects[i]['name']
+        //     };
+        // }
+        // console.table(allCountries)
+        // document.addEventListener("DOMContentLoaded", () => {
+        //     startGame()
+        //     document.querySelector("#btn-new-game").addEventListener("click", () => {
+        //         answer = confirm("Your progress will be lost. Are you sure you want to continue?");
+        //         if (answer) {
+        //             resetGame()
+        //         }
+        //     })
+        //     document.querySelector("#btn-next-round").addEventListener("click", () => {
+        //         startGame()
+        //     })
+        // });
+    </script>
+</head>
+
+<body>
+    <div class="game-panel">
+        <div id="sidebar">
+            <h1>Borders Quiz</h1>
+            <div id="sidebar-sticky">
+                <h2>Round: <span id="round">0</span></h2>
+                <h2>Score: <span id="score">0</span></h2>
+            </div>
+            <div id="btn-div">
+                <input type="button" id="btn-next-round" class="btn" value="Next Country" disabled>
+                <br>
+                <input type="button" id="btn-new-game" class="btn" value="New Round">
+            </div>
+        </div>
+        <div id="my-country">
+            <div id="my-country-flag"></div>
+            <div id="my-country-name"></div>
+        </div>
+        <div id="progress-div">
+            <progress id="progress"></progress>
+        </div>
+        <div class="neighbours-area">
+            <div id="neighbours-panel"></div>
+            <div id="cover-neighbours-panel">
+                <div id="covermsg"></div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./index.js">
+    // let shuffledCounties = shuffleArray(countryObjects)
+    // let pickIndx = -1;
+    // let gameRound = 1;
+    // let gameScore = 0;
+    // let rightNeighbourCounter = 0;
+    // let successAttempts = -1;
+    // let failAttempts = -1;
+    // let myCountryInfo
+
+    // function resetGame() {
+    //     shuffledCounties = shuffleArray(countryObjects)
+    //     pickIndx = -1;
+    //     gameRound = 1;
+    //     gameScore = 0;
+    //     document.getElementById('score').innerHTML = gameScore
+    //     startGame()
+    // }
+
+    // function startGame() {
+    //     pickCountry()
+    //     createBoardOfGame()
+    // }
+
+    // function pickCountry() {
+    //     document.getElementById('btn-next-round').disabled = true;
+    //     pickIndx++;
+    //     if (pickIndx === shuffledCounties.length - 1) {
+    //         alert(`No more countries on our database, neew game is starting. Your final score was: ${score}.`)
+    //         resetGame()
+    //     }
+    //     myCountryInfo = shuffledCounties[pickIndx]
+    // }
+    // async function createBoardOfGame() {
+    //     if (!myCountryInfo.borders) {
+    //         startGame();
+    //     } else {
+    //         document.getElementById('my-country-flag').innerHTML = country2emoji2(myCountryInfo.code) //Place the flag of my country 
+    //         document.getElementById('my-country-name').innerHTML = myCountryInfo.name; //Place the name
+    //         rightNeighbourCounter = myCountryInfo.borders.length //The amount of neighbours, (for later use also)
+    //         let falseNeighboursCounter = rightNeighbourCounter * 2; //Amount of fake neighbours
+    //         let allNeighboursList = myCountryInfo.borders.slice(); //Imports all neighbours to a list
+    //         //variables for attempts
+    //         successAttempts = rightNeighbourCounter;
+    //         failAttempts = rightNeighbourCounter;
+    //         //Fills that list with random countries (fake neighbours)
+    //         while (falseNeighboursCounter > 0) {
+    //             let rndindx = Math.floor(Math.random() * 250); //Random index, for the need to pick a random entry form the shuffledCounties list
+    //             if (!allNeighboursList.includes(shuffledCounties[rndindx]['code3']) && myCountryInfo.code3 !== shuffledCounties[rndindx]['code3']) { //If they are not already included || is myCountry, the get appended
+    //                 allNeighboursList.push(shuffledCounties[rndindx]['code3']);
+    //                 falseNeighboursCounter--;
+    //             }
+    //         }
+    //         //Shuffling the Neighbours list
+    //         allNeighboursList = shuffleArray(allNeighboursList)
+    //         document.getElementById('neighbours-panel').innerHTML = '' //in case it countain previous country's infos
+    //             //For each neighbour generate a div that gets appended to the neighbours-panel
+    //         console.table(allNeighboursList)
+    //         allNeighboursList.forEach(neighbours => {
+    //             const addNeighbours = document.createElement("div")
+    //                 //Check if a neighbour is real or fake one, and adds the appropriate class
+    //             if (myCountryInfo.borders.includes(neighbours)) {
+    //                 addNeighbours.className = 'neighbour neighbour-is-valid'
+    //             } else {
+    //                 addNeighbours.className = 'neighbour neighbour-is-invalid'
+    //             }
+    //             //Flag div of Neighbour flag
+    //             const addNeighboursFlag = document.createElement("div")
+    //             addNeighboursFlag.innerHTML = country2emoji2(allCountries[neighbours].code2)
+    //             addNeighboursFlag.className = 'neighbours-flag'
+    //                 //Name div of Neighbour name
+    //             const addNeighboursName = document.createElement("div")
+    //             addNeighboursName.innerHTML = allCountries[neighbours].name
+    //             addNeighboursName.className = 'neighbours-name'
+    //             addNeighbours.appendChild(addNeighboursFlag)
+    //             addNeighbours.appendChild(addNeighboursName)
+    //             document.getElementById('neighbours-panel').appendChild(addNeighbours)
+    //         });
+    //         document.getElementById('round').innerHTML = gameRound
+    //         document.getElementById('cover-neighbours-panel').style.display = 'none'
+    //         document.getElementById('progress').max = successAttempts
+    //         document.getElementById('progress').value = 0
+    //         document.getElementById('covermsg').style.color = '#f1faee'
+    //     }
+    // }
+    // //Ineracting with user's clicks
+    // document.getElementById('neighbours-panel').addEventListener('click', (e) => {
+    //     if (!e.target.parentNode.className.includes('was-clicked') && e.target.parentNode.className.includes('neighbour')) {
+    //         e.target.parentNode.className += ' was-clicked';
+    //         if (e.target.parentNode.className.includes('neighbour-is-valid')) {
+    //             gameScore += 5;
+    //             successAttempts--;
+    //             document.getElementById('progress').value++
+    //         } else {
+    //             gameScore -= 3;
+    //             failAttempts--;
+    //         }
+    //         document.getElementById('score').innerHTML = gameScore
+    //         if (failAttempts === 0 || successAttempts === 0) {
+    //             gameRound++;
+    //             document.getElementById('cover-neighbours-panel').style.display = 'flex'
+    //             let covermsg = document.getElementById('covermsg')
+    //             if (failAttempts === 0) {
+    //                 covermsg.innerHTML = "Sorry, you lost!"
+    //                 covermsg.style.color = '#e63946'
+    //             } else {
+    //                 covermsg.innerHTML = "Great work!"
+    //             }
+    //             document.getElementById('btn-next-round').disabled = false;
+    //         }
+    //     }
+    // })
+
+    // if (navigator.appVersion.indexOf("Macintosh") > 0) {
+    //     document.body.style.fontFamily = '"Open Sans"';
+    // }
+</script>
+
+</html>
