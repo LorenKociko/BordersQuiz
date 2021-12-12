@@ -6,3 +6,6 @@ Good luck and have fun!
 
 You can try it here:
 https://lorenkociko.com/projects/borders/index.html
+
+
+![image](https://user-images.githubusercontent.com/40165126/145727345-c275fa54-b053-49ae-be20-c6aee012cb88.png)
